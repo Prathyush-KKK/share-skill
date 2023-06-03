@@ -9,7 +9,7 @@ import {
 
 export default function Hero() {
   return (
-    <Container maxW={'5xl'}>
+    <Container minH={'35rem'} maxW={'5xl'}>
       <Stack
         textAlign={'center'}
         align={'center'}
@@ -17,17 +17,17 @@ export default function Hero() {
         py={{ base: 20, md: 28 }}>
         <Heading
           fontWeight={1000}
-          fontSize={{ base: '8rem', sm: '4xl', md: '8rem' }}
-          lineHeight={'20%'}>
+          fontSize={{ base: '3rem', sm: '6xl', md: '6rem' }}
+          lineHeight={{ base: '0.3rem', md: '4rem', sm:'1rem' }}>
           GET IT DONE.
         </Heading>
-        <Text >
+        {/* <Text >
           or
-        </Text>
+        </Text> */}
         <Heading
           fontWeight={1000}
-          fontSize={{ base: '8rem', sm: '4xl', md: '8rem' }}
-          lineHeight={'10%'}>
+          fontSize={{ base: '3rem', sm: '4rem', md: '7rem' }}
+          lineHeight={{ base: '1rem', md: '5rem', sm:'4rem' }}>
           DO IT.
         </Heading>
         <Stack spacing={20} direction={'row'} paddingTop={55}>

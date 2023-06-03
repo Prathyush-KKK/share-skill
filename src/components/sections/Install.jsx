@@ -11,7 +11,7 @@ import { GooglePlayButton,  AppStoreButton } from "react-mobile-app-button";
 
 export default function SplitScreen() {
     return (
-        <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}
+        <Stack minH={'38rem'} direction={{ base: 'column', md: 'row' }}
             bg={'black'}
         >
             <Flex p={8} flex={1} align={'center'} justify={'center'}>
@@ -53,10 +53,14 @@ export default function SplitScreen() {
                     </Stack>
                 </Stack>
             </Flex>
-            <Flex flex={1}>
+            <Flex 
+                    borderRadius={4}
+            
+            flex={1}>
                 <Image
                     alt={'Login Image'}
                     objectFit={'cover'}
+                    borderRadius={4}
                     padding={10}
                     src={
                         'https://images.unsplash.com/photo-1527689368864-3a821dbccc34?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'

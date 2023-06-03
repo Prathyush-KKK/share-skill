@@ -1,12 +1,13 @@
 import React from "react";
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Image } from "@chakra-ui/react";
+import logo from "../../assets/logo.png"
 
 export default function Logo(props) {
   return (
     <Box {...props}>
-      <Text fontSize="lg" fontWeight="bold">
-        Logo
-      </Text>
+      <Image
+     src={ 'https://i.postimg.cc/zDKM3jZT/logotransparent.png' } />
+
     </Box>
   );
 }

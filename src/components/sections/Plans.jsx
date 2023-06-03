@@ -1,4 +1,4 @@
-import {
+                                                import {
     Box,
     Heading,
     Container,
@@ -14,28 +14,29 @@ export default function Plans() {
     return (
         <>
 
-            <Container maxW={'3xl'}>
+            <Container minH={'38rem'} maxW={'3xl'}>
                 <Stack
                     as={Box}
                     textAlign={'center'}
                     spacing={{ base: 8, md: 14 }}
                     py={{ base: 20, md: 36 }}>
                     <Heading
+                        color={'#FFFFFF'}
                         fontWeight={600}
                         fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
                         lineHeight={'110%'}>
                         A Price To Suit Everyone <br />
 
                     </Heading>
-                    <Text color={'gray.500'}>
+                    <Text color={'#FFFFFF'}>
                         Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
                     </Text>
                     <Heading>
-                        <Text as={'span'} color={'#111B47'}>
+                        <Text as={'span'} color={'#FFFFFF'}>
                             40$
                         </Text>
                     </Heading>
-                    <Text as={'span'} color={'#111B47'}>
+                    <Text as={'span'} color={'#FFFFFF'}>
                         UI Design Kit
                     </Text>
                     <Stack
@@ -55,7 +56,7 @@ export default function Plans() {
                             }}>
                             Get Started
                         </Button>
-                        <Button variant={'link'} colorScheme={'#111B47'} size={'sm'}>
+                        <Button variant={'link'} color={'#FFFFFF'} size={'sm'}>
                             One Price, Simple.
                         </Button>
                     </Stack>

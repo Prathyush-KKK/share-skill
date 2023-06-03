@@ -4,19 +4,20 @@ import Header from "../sections/Header";
 import MarqueeText from "../sections/Marquee";
 
 
-export default function LandingLayout(props) {
+export default function AskLayout(props) {
   return (
 
     <Flex
       direction="column"
       align="center"
-      backgroundColor={"#F5B700"}
+      backgroundColor={"#008BF8"}
+      
       // maxW={{ xl: "1200px" }}
-      m="10 auto"
+      m="0 auto"
       {...props}
     >
       <MarqueeText />
-      <Header flexColor="#FAFF00"/>
+      <Header flexColor="#37447E"/>
       {props.children}
     </Flex>
   );

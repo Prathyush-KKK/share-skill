@@ -10,9 +10,10 @@ import {
   
   export default function Features() {
     return (
-      <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }} bg={'#DC0073'}>
+      <Stack minH={'70vh'} direction={{ base: 'column', md: 'row' }} bg={'#DC0073'}>
         <Flex flex={1}>
-          <Image
+          <Image padding={10}
+        //   height={40}
             alt={'Login Image'}
             objectFit={'cover'}
             src={

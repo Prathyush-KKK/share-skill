@@ -16,9 +16,10 @@ import {
 
 export default function Content() {
     return (
-        <Container maxW={'100%'} backgroundColor={"#89FC00"} >
+        <Container minH={'38rem'} maxW={'100%'} backgroundColor={"#89FC00"} >
             <Stack
                 align={'center'}
+                // alignItems={'center'}
                 spacing={{ base: 8, md: 10 }}
                 py={{ base: 20, md: 28 }}
                 direction={{ base: 'column', md: 'row' }}>

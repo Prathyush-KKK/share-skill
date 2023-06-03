@@ -58,7 +58,7 @@ const Header = (props) => {
     >
       <Flex align="center">
         <Logo
-          w="100px"
+          w="120px"
           color={'#505F98'}
         />
       </Flex>
@@ -79,8 +79,8 @@ const Header = (props) => {
           pt={[4, 4, 0, 0]}
           color={'#505F98'}
         >
-          <MenuItem to="/">Ask</MenuItem>
-          <MenuItem to="/how">Do</MenuItem>
+          <MenuItem to="/ask">Ask</MenuItem>
+          <MenuItem to="/do">Do</MenuItem>
           <MenuItem to="/profile">Profile</MenuItem>
           {/* <MenuItem to="/pricing">Pricing </MenuItem> */}
           {/* <MenuItem to="/signup" isLast>
