@@ -1,4 +1,4 @@
-                                                import {
+ import {
     Box,
     Heading,
     Container,
@@ -9,6 +9,8 @@
     useColorModeValue,
     createIcon,
 } from '@chakra-ui/react';
+
+import { Link } from 'react-router-dom';
 
 export default function Plans() {
     return (
@@ -37,14 +39,14 @@ export default function Plans() {
                         </Text>
                     </Heading>
                     <Text as={'span'} color={'#FFFFFF'}>
-                        UI Design Kit
-                    </Text>
+Premium-service                   </Text>
                     <Stack
                         direction={'column'}
                         spacing={3}
                         align={'center'}
                         alignSelf={'center'}
                         position={'relative'}>
+                        <Link to = "/ask">
                         <Button
                             colorScheme={'green'}
                             bg={'#111B47'}
@@ -56,6 +58,7 @@ export default function Plans() {
                             }}>
                             Get Started
                         </Button>
+                        </Link>
                         <Button variant={'link'} color={'#FFFFFF'} size={'sm'}>
                             One Price, Simple.
                         </Button>

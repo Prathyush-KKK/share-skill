@@ -13,10 +13,19 @@ import {
     IconProps,
     useColorModeValue,
 } from '@chakra-ui/react';
+import '../../assets/styles/App.css';
+import { Link } from "react-router-dom";
+
+
+
 
 export default function Content() {
     return (
         <Container minH={'38rem'} maxW={'100%'} backgroundColor={"#89FC00"} >
+               <div className="container">
+      <div className="background" />
+
+    
             <Stack
                 align={'center'}
                 // alignItems={'center'}
@@ -25,11 +34,13 @@ export default function Content() {
                 direction={{ base: 'column', md: 'row' }}>
                 <Stack flex={1} spacing={{ base: 5, md: 10 }}>
                     <Heading
+                        
                         lineHeight={1.1}
                         fontWeight={600}
                         align={'center'}
                         fontSize={{ base: '3xl', sm: '4xl', lg: '6xl' }}>
                         <Text
+                            color={'#FFFDFC'}
                             as={'span'}
                             fontWeight={1000}
 
@@ -48,16 +59,30 @@ export default function Content() {
                             EASY
                         </Text>
                         <br />
-                        <Text as={'span'} color={'#111B47'}
+                        <Text
+                        
+                        color={'#FFFDFC'}
+                        as={'span'} 
                             // paddingLeft={20}
                         >
                             &
                         </Text>
                         <br />
-                        <Text as={'span'} color={'#111B47'}
+                        <Text
+                        co
+                        as={'span'} color={'#FFFDFC'}
                             // paddingLeft={20}
                             fontWeight={1000}
-
+                            _after={{
+                                content: "''",
+                                width: 'full',
+                                height: '30%',
+                                position: 'absolute',
+                                bottom: 1,
+                                left: 0,
+                                bg: 'red.400',
+                                zIndex: -1,
+                            }}
                         >
                             FAST
                         </Text>
@@ -79,7 +104,7 @@ export default function Content() {
                         // paddingTop={14}
                         >
                         
-                        <Text color={'#111B47'}>
+                        <Text color={'#111B47'} zIndex={'9999'}>
                         Connecting campus communities, our services-based app simplifies task management, facilitates collaboration, and empowers individuals to leverage their skills for a seamless and rewarding campus experience.
                     </Text>
                     <Stack
@@ -90,10 +115,12 @@ export default function Content() {
                         // spacing={{ base: 4, sm: 6 }}
                         // direction={{ base: 'column', sm: 'row' }}
                         >
+                    <Link to="/Do">
                         <Button
                         align={'center'}
                             borderRadius={0}
-                            backgroundColor={'#111B47'}
+                            backgroundColor={'rgb(0,0,0,0)'}
+                            border={'3px solid rgb(250,255,255,0.7)'}
                             size={'lg'}
                             width={'200px'}
                             fontWeight={'normal'}
@@ -105,11 +132,13 @@ export default function Content() {
                             >
                             Start doing Work
                         </Button>
+                        </Link>
                     </Stack>
                         
                     </Box>
                 </Flex>
             </Stack>
+            </div>
         </Container>
     );
 }

@@ -19,7 +19,7 @@ import {
 } from '@chakra-ui/react';
 
 import React, { useState } from 'react';
-
+import { Divider } from '@chakra-ui/react';
 import Form from './Form';
 
 export default function Hero2() {
@@ -99,7 +99,21 @@ export default function Hero2() {
           AND GET IT DONE.
         </Heading>
         <Stack spacing={20} direction={'row'} paddingTop={55}>
+
+          <div>
+          <Text
+          
+          align={'center'}
+            fontWeight={600}
+          fontSize={{ base: '1.5rem', sm: '2xl', md: '2xl' }}
+          >
+            Welcome Prathyush Kode 
+          </Text>
+          
+          
           <Button
+          marginTop={10}
+          align={'center'}
             // rounded={'full'}
             px={6}
             borderRadius={0}
@@ -113,6 +127,7 @@ export default function Hero2() {
           // _hover={{ bg: 'orange.500' }}
           >
             Request Work            </Button>
+          </div>
           <Form isOpen={isModalOpen} onClose={handleCloseModal} />
 
         </Stack>

@@ -8,7 +8,7 @@ import { ButtonGroup } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
 
 function Cards(props){
-    const { imageUrl, altText, title, desc, price } = props;
+    const { imageUrl, altText, title, description, price } = props;
     return(<Card maxW='sm'>
     <CardBody>
       <Image
@@ -19,7 +19,7 @@ function Cards(props){
       <Stack mt='6' spacing='3'>
         <Heading size='md'>{title}</Heading>
         <Text>
-          {desc}
+          {description}
         </Text>
         <Text color='blue.600' fontSize='2xl'>
           {price}

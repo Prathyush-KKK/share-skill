@@ -6,6 +6,8 @@ import {
   Text,
   Button
 } from '@chakra-ui/react';
+import { Link } from "react-router-dom";
+
 
 export default function Hero() {
   return (
@@ -31,7 +33,10 @@ export default function Hero() {
           DO IT.
         </Heading>
         <Stack spacing={20} direction={'row'} paddingTop={55}>
+        <Link to="../ask">
+
           <Button
+            
             // rounded={'full'}
             px={6}
             borderRadius={0}
@@ -44,6 +49,9 @@ export default function Hero() {
             >
             Ask for Work
           </Button>
+          </Link>
+
+          <Link to="../Do">
           <Button
             borderColor={'#111B47'}
             borderWidth={1}
@@ -56,6 +64,8 @@ export default function Hero() {
           >
             Start doing Work
           </Button>
+          </Link>
+
         </Stack>
       </Stack>
     </Container>

@@ -8,6 +8,8 @@ import {
     useBreakpointValue,
   } from '@chakra-ui/react';
   
+import { Link } from 'react-router-dom';
+
   export default function Features() {
     return (
       <Stack minH={'70vh'} direction={{ base: 'column', md: 'row' }} bg={'#DC0073'}>
@@ -45,6 +47,7 @@ import {
 mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
             </Text>
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
+              <Link to="../do">
               <Button
                 rounded={'full'}
                 bg={'#111B47'}
@@ -56,6 +59,7 @@ mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla 
                 }}>
                 Purchase Now
               </Button>
+              </Link>
             </Stack>
           </Stack>
         </Flex>
