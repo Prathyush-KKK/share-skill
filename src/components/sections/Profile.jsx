@@ -1,40 +1,59 @@
 import React from 'react';
-import { Box, Container, Heading, Text, VStack } from '@chakra-ui/react';
+import { Box, Container, Heading, Text, VStack, Avatar, Divider, Badge, Flex, Spacer, Stack } from '@chakra-ui/react';
 
 const ProfilePage = () => {
   return (
-    <Box bg="gray.100" py={10}>
+    <Box minH={'100vh'} bg="gray.100" py={10}>
       <Container maxW="container.md" bg="white" p={6} borderRadius="md" boxShadow="md">
-        <VStack spacing={6} align="center">
-          <Heading size="lg">Profile</Heading>
-          <Box>
-            <Text fontWeight="bold" fontSize="lg">
-              Name:
-            </Text>
-            <Text fontSize="md">John Doe</Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold" fontSize="lg">
-              Email:
-            </Text>
-            <Text fontSize="md">john.doe@example.com</Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold" fontSize="lg">
-              Location:
-            </Text>
-            <Text fontSize="md">New York, USA</Text>
-          </Box>
-          <Box>
-            <Text fontWeight="bold" fontSize="lg">
-              Bio:
-            </Text>
-            <Text fontSize="md">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod dapibus lectus, nec consequat magna
-              consectetur nec. Aliquam in elit fermentum, vulputate tortor ut, commodo nisl.
-            </Text>
-          </Box>
-        </VStack>
+        <Flex direction="column" align="center" justify="center" spacing={6}>
+          <Avatar size="2xl" name="John Doe" src="https://i.pravatar.cc/150?img=3" mb={4} />
+          <Heading size="lg" textAlign="center">
+            John Doe
+          </Heading>
+          <Text fontSize="md" color="gray.600" textAlign="center">
+            Engineer
+          </Text>
+          <Divider />
+          <VStack spacing={4} align="start" w="full">
+            <Stack direction="row" align="center">
+              <Text fontSize="lg" fontWeight="bold">
+                Location:
+              </Text>
+              <Spacer />
+              <Badge colorScheme="teal">Vellore, TN</Badge>
+            </Stack>
+            <Stack direction="row" align="center">
+              <Text fontSize="lg" fontWeight="bold">
+                Email:
+              </Text>
+              <Spacer />
+              <Text fontSize="md">john.doe@example.com</Text>
+            </Stack>
+            <Stack direction="row" align="center">
+              <Text fontSize="lg" fontWeight="bold">
+                Phone:
+              </Text>
+              <Spacer />
+              <Text fontSize="md">+91 9428265382</Text>
+            </Stack>
+            <Stack direction="row" align="start">
+              <Text fontSize="lg" fontWeight="bold">
+                Bio:
+              </Text>
+              <Spacer />
+              <Text fontSize="md">
+                Hello 👋 I am John Doe!
+              </Text>
+            </Stack>
+          </VStack>
+          <Divider />
+          <Flex mt={4}>
+            <Badge colorScheme="green">Online</Badge>
+            <Spacer />
+            <Spacer />
+            <Badge marginLeft={5} colorScheme="blue">Verified Customer</Badge>
+          </Flex>
+        </Flex>
       </Container>
     </Box>
   );

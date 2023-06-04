@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Share Skill Web App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Description
 
-## Available Scripts
+Share Skill is a web application built using Chakra UI, Firebase, and Razorpay payment gateway. It serves as a platform where users can request services and workers or fellow university members can take up the work provided. This web app is the counterpart of the Share Skill mobile app, offering a convenient and accessible way for users to interact and utilize the services.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- User Registration: Users can create an account using their email and password.
+- User Authentication: Secure user authentication is implemented using Firebase Authentication.
+- Service Requests: Users can create service requests by providing details about the service they need.
+- Service Listings: Workers or fellow university members can view available service requests.
+- Worker Selection: Workers can select the service requests they wish to take up.
+- Payment Integration: Razorpay payment gateway is integrated for secure and seamless transactions.
+- Real-time Updates: Users and workers receive real-time notifications for service requests and updates.
+- User Profiles: Users can update their profile information and view their transaction history.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Screen Shots
+![home](https://i.postimg.cc/Zq9xmBmd/image.png)  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![do](https://i.postimg.cc/C582xrVb/image.png)  
 
-### `npm test`
+![ask](https://i.postimg.cc/sgTTsCZt/image.png) 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![form](https://i.postimg.cc/qvF21JKM/image.png)  
 
-### `npm run build`
+![form](https://i.postimg.cc/tRzPLt6c/image.png) 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![form](https://i.postimg.cc/qq9dmCpx/image.png) 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run the Share Skill web app locally, please follow the steps below:
 
-### `npm run eject`
+1. Clone the repository: `git clone https://github.com/your-username/share-skill-web.git`
+2. Navigate to the project directory: `cd share-skill-web`
+3. Install the dependencies: `npm install`
+4. Create a Firebase project and obtain the necessary credentials (Firebase Web SDK configuration).
+5. Create a Razorpay account and obtain the API key and secret.
+6. Set up the Firebase and Razorpay credentials in the project.
+7. Run the web app: `npm start`
+8. Open your browser and navigate to `http://localhost:3000` to access the Share Skill web app.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Note: Make sure you have Node.js and npm installed on your machine.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Technologies Used
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Chakra UI: A simple and modular UI component library for React.
+- Firebase: A comprehensive development platform providing a range of tools and services for building web and mobile applications.
+- Firebase Authentication: Firebase service for user authentication and management.
+- Razorpay: A leading payment gateway provider for businesses.
+- React: A JavaScript library for building user interfaces.
+- Google Maps API: Get nearby location data
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Contributors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Aniruddh Laharia
+- Aryan Chodry
+- Ayush Mishra
+- Ishank Bhotnagar
+- Prathyush Kodhanpur
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

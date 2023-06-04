@@ -12,7 +12,7 @@ import { GooglePlayButton,  AppStoreButton } from "react-mobile-app-button";
 export default function SplitScreen() {
     return (
         <Stack minH={'38rem'} direction={{ base: 'column', md: 'row' }}
-            bg={'black'}
+            bg={'#181D27'}
         >
             <Flex p={8} flex={1} align={'center'} justify={'center'}>
                 <Stack spacing={6} w={'full'} maxW={'lg'}>

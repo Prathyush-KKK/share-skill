@@ -35,7 +35,7 @@ const CardList = () => {
           return {
             id: doc.id,
             title: data.title,
-            desc: data.desc,
+            description: data.description,
             price: data.price,
           };
         });
@@ -59,7 +59,7 @@ const CardList = () => {
           {/* <Card /> */}
           {chakraCards.map(card => (
             console.log(card.title),
-          <Card  title={card.title} desc={card.desc} price={card.price} />
+            <Card title={card.title} description={card.description} price={card.price} />
           ))}
 
         </Wrap>
@@ -67,7 +67,7 @@ const CardList = () => {
     </>
   );
 
- 
+
 };
 
 export default CardList;

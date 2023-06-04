@@ -18,6 +18,7 @@ export default function DooDoo() {
   return (
     <>
     <Profile />
+    <Footer />
     </>
     
   );

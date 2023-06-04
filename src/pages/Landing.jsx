@@ -18,11 +18,13 @@ export default function Landing() {
     </LandingLayout>
     <Content  />
     <div className="container">
+
       <Install />
       <Features />
-    </div>
+    
     <Plans />
     <Footer />  
+    </div>
     </>
     
   );
