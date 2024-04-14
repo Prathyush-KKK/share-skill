@@ -1,0 +1,28 @@
+.container {
+  margin: 0;
+  left: 0;
+  right: 0;
+  padding: 0;
+    /* Add any other styling properties as needed */
+  }
+
+  
+  .background {
+    background-image: url('./background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    z-index: 6;
+    z-index:-9999; 
+ 
+    /* Add any additional background styles */
+  }
+  
+  .svg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
