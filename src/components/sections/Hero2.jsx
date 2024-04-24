@@ -106,8 +106,10 @@ export default function Hero2() {
         
             fontWeight={600}
           fontSize={{ base: '1.5rem', sm: '2xl', md: '2xl' }}
+          
           >
-            Welcome Prathyush Kode 
+            Welcome <span> </span>  
+            <span style={{textDecoration: "underline", cursor: "pointer"}}>Prathyush!</span> 
           </Text>
           
           
@@ -117,7 +119,7 @@ export default function Hero2() {
             // rounded={'full'}
             px={6}
             borderRadius={0}
-            colorScheme={'#111B47'}
+            color={'white'}
             bg={'#111B47'}
             paddingLeft={10}
             paddingRight={10}
@@ -126,7 +128,7 @@ export default function Hero2() {
 
           // _hover={{ bg: 'orange.500' }}
           >
-            Request Work            </Button>
+            Request Work</Button>
           </div>
           <Form isOpen={isModalOpen} onClose={handleCloseModal} />
 

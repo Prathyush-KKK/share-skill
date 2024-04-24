@@ -12,7 +12,6 @@ const App = createBrowserRouter([
     path: "/",
     element: <Landing />,
     children: [
-   
       {
         path: "/ask",
         element: <Ask />,

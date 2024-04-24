@@ -27,6 +27,10 @@ const CloseIcon = () => (
   </svg>
 );
 
+const textStyle = {
+  fontWeight: "700",
+};
+
 const MenuIcon = () => (
   <svg
     width="24px"
@@ -78,9 +82,9 @@ const Header = (props) => {
           pt={[4, 4, 0, 0]}
           color={'#505F98'}
         >
-          <MenuItem to="/ask">Ask</MenuItem>
-          <MenuItem to="/do">Do</MenuItem>
-          <MenuItem to="/profile">Profile</MenuItem>
+          <MenuItem to="/ask" style={textStyle}>Ask</MenuItem>
+          <MenuItem to="/do" style={textStyle}>Do</MenuItem>
+          <MenuItem to="/profile" style={textStyle}>Profile</MenuItem>
           {/* <MenuItem to="/pricing">Pricing </MenuItem> */}
           {/* <MenuItem to="/signup" isLast>
             <Button

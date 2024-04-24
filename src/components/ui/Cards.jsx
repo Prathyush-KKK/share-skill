@@ -8,7 +8,7 @@ import { ButtonGroup } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
 
 function Cards(props) {
-  const { imageUrl, altText, title, description, price, promotion } = props;
+  const { imageUrl, altText, title, description, price, promotion, textTitle, textDesc } = props;
   
   // Styles
   const cardStyles = {
@@ -53,7 +53,7 @@ function Cards(props) {
         src={imageUrl || 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'}
         alt={altText || title}
         borderRadius={promotion ? 'xl' : 'lg'} // Increase border radius for image
-        maxW={promotion ? '100%' : '50%'} // Limit width of image to half if in promotion mode
+        maxW={promotion ? '100%' : '100%'} // Limit width of image to half if in promotion mode
         {...imageStyles}
       />
       <Stack {...contentStyles} mt='6' spacing='3'>
@@ -69,10 +69,10 @@ function Cards(props) {
       <CardFooter w='full' textAlign='center'> {/* Make the footer full width */}
         <ButtonGroup spacing='2'>
           <Button variant='solid' colorScheme='blue'>
-            Buy now
+            {textTitle}
           </Button>
           <Button variant='ghost' colorScheme='blue'>
-            Add to cart
+            {textDesc}
           </Button>
         </ButtonGroup>
       </CardFooter>

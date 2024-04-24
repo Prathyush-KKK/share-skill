@@ -35,9 +35,10 @@ const ProfilePage = () => {
         position="absolute"
         top="1rem"
         right="1rem"
+        color="black"
         onClick={toggleEditMode}
       />
-      <Flex direction="column" align="center" justify="center" spacing={6}>
+      <Flex direction="column" align="center" justify="center" color={'black'} spacing={6}>
         <Avatar size="2xl" name={name} src="https://i.pravatar.cc/150?img=3" mb={4} />
         <Heading size="lg" textAlign="center">
           {name}
@@ -52,7 +53,7 @@ const ProfilePage = () => {
               Location:
             </Text>
             <Spacer />
-            <Badge colorScheme="teal">{location}</Badge>
+            <Badge colorScheme="dark-blue">{location}</Badge>
           </Stack>
           <Stack direction="row" align="center">
             <Text fontSize="lg" fontWeight="bold">
@@ -60,7 +61,7 @@ const ProfilePage = () => {
             </Text>
             <Spacer />
             {isEditMode ? (
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input type="email" value={email} style={{backgroundColor: "white", border: "1px solid black"}} onChange={(e) => setEmail(e.target.value)} />
             ) : (
               <Text fontSize="md">{email}</Text>
             )}
@@ -71,7 +72,7 @@ const ProfilePage = () => {
             </Text>
             <Spacer />
             {isEditMode ? (
-              <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} />
+              <input type="tel" value={phone} style={{backgroundColor: "white", border: "1px solid black"}} onChange={(e) => setPhone(e.target.value)} />
             ) : (
               <Text fontSize="md">{phone}</Text>
             )}
@@ -82,7 +83,7 @@ const ProfilePage = () => {
             </Text>
             <Spacer />
             {isEditMode ? (
-              <textarea value={bio} onChange={(e) => setBio(e.target.value)} />
+              <textarea value={bio} style={{backgroundColor: "white", border: "1px solid black"}} onChange={(e) => setBio(e.target.value)} />
             ) : (
               <Text fontSize="md">{bio}</Text>
             )}

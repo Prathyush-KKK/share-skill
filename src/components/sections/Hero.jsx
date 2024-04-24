@@ -40,7 +40,7 @@ export default function Hero() {
             // rounded={'full'}
             px={6}
             borderRadius={0}
-            colorScheme={'#111B47'}
+            color={'white'}
             bg={'#111B47'}
             paddingLeft={10}
             paddingRight={10}

@@ -6,8 +6,10 @@ import {
     Text,
     Button
   } from '@chakra-ui/react';
+  import { useNavigate } from 'react-router-dom';
   
   export default function Hero2() {
+    const navigate = useNavigate();
     return (
       <Container maxW={'5xl'}>
         <Stack
@@ -30,10 +32,11 @@ COMPLETE PEOPLE'S TASKS          </Heading>
               // rounded={'full'}
               px={6}
               borderRadius={0}
-              colorScheme={'#111B47'}
+              color={'white'}
               bg={'#111B47'}
               paddingLeft={10}
               paddingRight={10}
+              onClick={navigate('/ask')}
   
               // _hover={{ bg: 'orange.500' }}
               >

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, FormControl, FormLabel, Input, Textarea, Button } from '@chakra-ui/react';
-// import { useFirestore } from 'reactfire';
+import { Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, FormControl, FormLabel, Input, Textarea, Button, Select } from '@chakra-ui/react';
 import { collection, addDoc, getFirestore } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
-// import { collection, addDoc, getFirestore } from 'firebase/firestore';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
@@ -18,7 +16,6 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
 const SimpleForm = ({ isOpen, onClose }) => {
@@ -27,21 +24,21 @@ const SimpleForm = ({ isOpen, onClose }) => {
         description: '',
         price: '',
         location: '',
+        contact: '',
         keywords: '',
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
 
-    // const firestore = useFirestore();
     const cardsCollection = collection(db, 'Cards');
 
     useEffect(() => {
-        // Reset the form when the modal is closed
         if (!isOpen) {
             setFormData({
                 title: '',
                 description: '',
                 price: '',
                 location: '',
+                contact: '',
                 keywords: '',
             });
             setIsSubmitted(false);
@@ -59,15 +56,14 @@ const SimpleForm = ({ isOpen, onClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Create a new document in the "Cards" collection
             await addDoc(cardsCollection, {
                 title: formData.title,
                 description: formData.description,
                 price: formData.price,
                 location: formData.location,
+                contact: formData.contact,
                 keywords: formData.keywords,
             });
-            console.log(formData); // You can perform further actions with the form data
             setIsSubmitted(true);
             window.location.reload();
         } catch (error) {
@@ -76,14 +72,14 @@ const SimpleForm = ({ isOpen, onClose }) => {
     };
 
     const handleViewProfile = () => {
-        console.log('View in profile'); // Replace this with your desired action
+        console.log('View in profile');
     };
 
     return (
         <Modal isOpen={isOpen} onClose={onClose}>
             <ModalOverlay />
             <ModalContent>
-                <ModalHeader>Submitted!</ModalHeader>
+                <ModalHeader>Add your Request</ModalHeader>
                 <ModalBody>
                     {isSubmitted ? (
                         <>
@@ -114,6 +110,14 @@ const SimpleForm = ({ isOpen, onClose }) => {
                                 ></Textarea>
                             </FormControl>
                             <FormControl mb={4}>
+                                <FormLabel>Image URL:</FormLabel>
+                                <Textarea
+                                    name="imageURL"
+                                    value={formData.title}
+                                    onChange={handleChange}
+                                ></Textarea>
+                            </FormControl>
+                            <FormControl mb={4}>
                                 <FormLabel>Price:</FormLabel>
                                 <Input
                                     type="text"
@@ -132,13 +136,32 @@ const SimpleForm = ({ isOpen, onClose }) => {
                                 />
                             </FormControl>
                             <FormControl mb={4}>
-                                <FormLabel>Keywords:</FormLabel>
+                                <FormLabel>Contact:</FormLabel>
                                 <Input
                                     type="text"
+                                    name="contact"
+                                    value={formData.contact}
+                                    onChange={handleChange}
+                                />
+                            </FormControl>
+                            <FormControl mb={4}>
+                                <FormLabel>Keywords:</FormLabel>
+                                <Select
                                     name="keywords"
                                     value={formData.keywords}
                                     onChange={handleChange}
-                                />
+                                >
+                                    <option value="Education">Education</option>
+                                    <option value="Medical">Medical</option>
+                                    <option value="Tech">Tech</option>
+                                    <option value="Manual">Manual</option>
+                                    <option value="Delivery">Delivery</option>
+                                    <option value="Food">Food</option>
+                                    <option value="Grooming">Grooming</option>
+                                    <option value="Plumbing">Plumbing</option>
+                                    <option value="Carpentry">Carpentry</option>
+                                    <option value="Other">Other</option>
+                                </Select>
                             </FormControl>
                             <Button colorScheme="blue" type="submit" mr={3}>
                                 Submit

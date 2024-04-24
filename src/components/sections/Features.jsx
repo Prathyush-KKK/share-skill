@@ -39,12 +39,11 @@ import { Link } from 'react-router-dom';
                   bg: 'blue.400',
                   zIndex: -1,
                 }}>
-                Light, Fast & Powerful
+                Do work
               </Text>
             </Heading>
             <Text fontSize={{ base: 'md', lg: 'lg' }} color={'black.500'}>
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus 
-mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+                Need to make a quick buck? Need something to utilize your skills and kill your time? Ask for work around the campus here and reap your benifits through our app.
             </Text>
             <Stack direction={{ base: 'column', md: 'row' }} spacing={4}>
               <Link to="../do">
@@ -57,7 +56,7 @@ mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla 
                 _hover={{
                   bg: 'blue.500',
                 }}>
-                Purchase Now
+                Do work
               </Button>
               </Link>
             </Stack>

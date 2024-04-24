@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import { Box, Container, Heading, Text } from '@chakra-ui/react';
+import { Box, Container, Heading, Mark, Text } from '@chakra-ui/react';
 import Login from '../components/login/Login';
 import Signup from '../components/login/SignUp';
 import Header from '../components/sections/Header';
+import MarqueeText from '../components/sections/Marquee';
 
 const AuthenticationPage = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -12,6 +13,7 @@ const AuthenticationPage = () => {
   };
   return (
     <>
+    <MarqueeText />
     <Header />
     <Box
       bg="#161616"

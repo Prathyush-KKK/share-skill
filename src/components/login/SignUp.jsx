@@ -22,7 +22,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -52,6 +52,8 @@ const Signup = ({ toggleAuthMode }) => {
         console.log(errorCode, errorMessage);
       });
   };
+  
+
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
@@ -103,8 +105,8 @@ const Signup = ({ toggleAuthMode }) => {
                     type="email"
                     placeholder="Email"
                     value={email}
-                    bg="white" // Change background color to white
-                    color="gray.800"
+                    bg="#20242D"
+                    color={"gray.100"}
                     onChange={(e) => setEmail(e.target.value)}
                   />
                 </InputGroup>
@@ -120,8 +122,8 @@ const Signup = ({ toggleAuthMode }) => {
                     type={showPassword ? "text" : "password"}
                     placeholder="Password"
                     value={password}
-                    bg="white" // Change background color to white
-                    color="gray.800"
+                    bg="#20242D"
+                    color={"gray.100"}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <InputRightElement width="4.5rem">
@@ -132,6 +134,7 @@ const Signup = ({ toggleAuthMode }) => {
                 </InputGroup>
               </FormControl>
               <Button
+              onClick={toggleAuthMode}
                 borderRadius={10}
                 type="submit"
                 variant="solid"

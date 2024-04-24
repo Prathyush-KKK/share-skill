@@ -118,6 +118,7 @@ export default function Content() {
                     <Link to="/Do">
                         <Button
                         align={'center'}
+                        bg={'gray.200'}
                             borderRadius={0}
                             backgroundColor={'rgb(0,0,0,0)'}
                             border={'3px solid rgb(250,255,255,0.7)'}

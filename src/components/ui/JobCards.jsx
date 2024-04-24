@@ -1,11 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Text, Button } from '@chakra-ui/react';
 import axios from 'axios';
+import HorizontalScrollableCards from '../layouts/HorCards';
 
 const JobList = ({ mode }) => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const containerStyles = {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: "20px",
+    marginTop: "30px"
+  };
+  const textStyles = {
+    transform: "rotate(-90deg)", // Rotate text by 90 degrees anti-clockwise
+    color: "gray.100",
+    fontSize: "48px",
+    fontWeight: "600"
+  };
   useEffect(() => {
     const fetchJobs = async () => {
       try {
@@ -32,12 +46,14 @@ const JobList = ({ mode }) => {
   return (
     <Box color={"gray.200"}>
       <Text fontSize="xl" fontWeight="bold" mb={4}>
-        {mode === 'completed' ? 'Completed Jobs' : 'Ongoing Jobs'}
+        {mode === 'completed' ? 'Your Completed Jobs' : 'Your Ongoing Jobs'}
       </Text>
       {loading ? (
         <Text>Loading...</Text>
       ) : jobs.length === 0 ? (
-        <Text>No jobs available</Text>
+        <div style={containerStyles}>
+        <HorizontalScrollableCards number={4} textDesc={"View Details"} textTitle={"Connect"} />
+      </div>
       ) : (
         <Box>
           {jobs.map((job) => (

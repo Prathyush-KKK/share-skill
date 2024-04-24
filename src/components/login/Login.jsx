@@ -19,6 +19,7 @@ import {
 import { FaUserAlt, FaLock } from "react-icons/fa";
 import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -99,7 +100,7 @@ const Login = ({toggleAuthMode}) => {
                     pointerEvents="none"
                     children={<CFaUserAlt color="gray.300" />}
                   />
-                  <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                  <Input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} color={"gray.100"} />
                 </InputGroup>
               </FormControl>
               <FormControl>
@@ -114,7 +115,7 @@ const Login = ({toggleAuthMode}) => {
                     placeholder="Password"
                     value={password}
                     bg="#20242D"
-                    color="#20242D"
+                    color={"gray.100"}
                     onChange={(e) => setPassword(e.target.value)}
                   />
                   <InputRightElement width="4.5rem">

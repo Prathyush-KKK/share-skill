@@ -53,7 +53,6 @@ const CardList = () => {
     <>
       <Flex justify="center" mt="-10">
         <Wrap spacing="4" justify="center">
-          <Card description="penis" price="$340" title="niggers" promotion/>
           <Card />
           <Card />
           <Card />

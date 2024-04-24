@@ -31,7 +31,7 @@ export default function Plans() {
 
                     </Heading>
                     <Text color={'#FFFFFF'}>
-                        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
+                        Negotiate directly with 
                     </Text>
                     <Heading>
                         <Text as={'span'} color={'#FFFFFF'}>
@@ -52,6 +52,7 @@ Premium-service                   </Text>
                             bg={'#111B47'}
                             rounded={'full'}
                             px={6}
+                            color={'white'}
                             borderRadius={0}
                             _hover={{
                                 bg: 'green.500',
