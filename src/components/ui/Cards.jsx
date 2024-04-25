@@ -8,7 +8,7 @@ import { ButtonGroup } from '@chakra-ui/react';
 import { Button } from '@chakra-ui/react';
 
 function Cards(props) {
-  const { imageUrl, altText, title, description, price, promotion, textTitle, textDesc } = props;
+  const { imageUrl, altText, title, description, price, promotion, textTitle, textDesc, id,onDescButtonClick,onTitleButtonClick } = props;
   
   // Styles
   const cardStyles = {
@@ -62,16 +62,16 @@ function Cards(props) {
           {description}
         </Text>
         <Text color='blue.600' fontSize='2xl'>
-          {"Rs." + price}
+          {"Rs. " + price}
         </Text>
       </Stack>
       <Divider />
       <CardFooter w='full' textAlign='center'> {/* Make the footer full width */}
         <ButtonGroup spacing='2'>
-          <Button variant='solid' colorScheme='blue'>
+          <Button variant='solid' colorScheme='blue'  onClick={onTitleButtonClick}>
             {textTitle}
           </Button>
-          <Button variant='ghost' colorScheme='blue'>
+          <Button variant='ghost' colorScheme='blue'  onClick={onDescButtonClick}>
             {textDesc}
           </Button>
         </ButtonGroup>

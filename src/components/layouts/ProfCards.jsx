@@ -55,20 +55,25 @@ export default function HorizontalScrollableCards({
     };
 
     fetchData();
-  }, []);
+  }, [cardsData]);
+  
 console.log(currentUser)
-  useEffect(() => {
-  if (!currentUser) return; // Skip if currentUser is null
 
-  // Filter cards based on status and user ID
-  const filtered = cardsData.filter((card) => {
-    if (textTitle === "Promote" && card.status === "pending" && card.uid === currentUser.uid) return true;
-    if (textTitle === "Mark Complete" && card.status === "ongoing" && card.uid === currentUser.uid) return true;
-    if (textTitle === "View Details" && card.status === "completed" && card.uid === currentUser.uid) return true;
-    return false;
-  });
-  setFilteredCards(filtered);
-}, [cardsData, currentUser, textTitle]);
+useEffect(() => {
+    if (!currentUser) return; // Skip if currentUser is null
+  
+    // Filter cards based on uid1 being equal to currentUser.uid and presence of uid
+    const filtered = cardsData.filter((card) => {
+      if (
+        card.uid1 === currentUser.uid && // Check if uid1 matches currentUser.uid
+        card.uid // Check if uid is present
+      ) {
+        return true;
+      }
+      return false;
+    });
+    setFilteredCards(filtered);
+  }, [cardsData, currentUser]);
 
   const cardContainerStyles = {
     display: "flex",

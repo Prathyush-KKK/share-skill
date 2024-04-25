@@ -20,7 +20,7 @@ export default function DooDoo() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/data/Cards");
+        const response = await axios.get("http://localhost:3000/api/data/");
         setCardsData(response.data);
       } catch (error) {
         console.error("Error fetching data:", error.message);
@@ -30,9 +30,20 @@ export default function DooDoo() {
     fetchData();
   }, []);
 
+  const updateCardData = async (id, newData) => {
+    try {
+      const response = await axios.put(`http://localhost:3000/api/data/${id}`, newData);
+      console.log(response.data.message); // Log the response message
+    } catch (error) {
+      console.error("Error updating card data:", error.message);
+    }
+  };
+
   const handleKeywordClick = (keyword) => {
     setSelectedKeyword(keyword);
   };
+
+
 
   return (
     <>
@@ -50,13 +61,14 @@ export default function DooDoo() {
           promotion
           title="Exam Help"
           description="I need help to study for FATS asap. Second year student here"
-          price={"Rs. 3400"}
+          price={"3400"}
           textTitle="Connect"
           textDesc="View Details"
         />
       </Flex>
 
-      <HorizontalScrollableCards selectedKeyword={selectedKeyword} />
+      <HorizontalScrollableCards selectedKeyword={selectedKeyword} textTitle="Connect"
+          textDesc="View Details" />
     </>
   );
 }

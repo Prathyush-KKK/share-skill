@@ -22,36 +22,15 @@ export default function Ask() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/data/Cards');
-        setCards(response.data);
-        setLoading(false);
-      } catch (error) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
 
-    fetchCards();
-  }, []);
-  console.log(cards);
-
-  // if (loading) {
-  //   return <div>Loading...</div>;
-  // }
-
-  // if (error) {
-  //   return <div>Error: {error}</div>;
-  // }
   const containerStyles = {
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     padding: "20px",
-    marginTop: "30px"
+    marginTop: "100px",  
+    
   };
   const arrowStyles = {
     position: "relative",
@@ -66,7 +45,7 @@ export default function Ask() {
   };
 
   const cardListStyles = {
-    marginTop: "20px",
+    marginTop: "100px",
     // ... add more CSS properties as needed
   };
 
@@ -74,7 +53,8 @@ export default function Ask() {
     transform: "rotate(-90deg)", // Rotate text by 90 degrees anti-clockwise
     color: "gray.100",
     fontSize: "48px",
-    fontWeight: "600"
+    fontWeight: "600",
+    marginBottom: "200px"
   };
   return (
     <>
@@ -90,14 +70,11 @@ export default function Ask() {
       <div style={containerStyles}>
       <Text color={"gray.100"} style={textStyles}>ONGOING</Text>
         <HorizontalScrollableCards number={6}  textTitle={"Mark Complete"} textDesc={"Cancel"} />
-        <FaArrowRight style={arrowStyles} />
       </div>
 
       <div style={containerStyles}>
       <Text color={"gray.100"} style={textStyles}>COMPLETED</Text>
         <HorizontalScrollableCards number={1} textTitle={"View Details"} />
-        <FaArrowRight style={arrowStyles} />
-
       </div>
       
     {/* <LandingLayout>

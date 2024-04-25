@@ -8,8 +8,15 @@ const cors = require('cors');
 const admin = require("firebase-admin");
 
 const serviceAccount = require("./key.json");
-const db = admin.firestore();
 
+
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://shareskill-866a0-default-rtdb.asia-southeast1.firebasedatabase.app"
+});
+app.use(cors());
+const db = admin.firestore();
 
 // Endpoint to get the current user's data
 app.get('/api/current-user', async (req, res) => {
@@ -36,23 +43,15 @@ app.get('/api/current-user', async (req, res) => {
         res.status(500).send('Error fetching user');
     }
 });
-
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://shareskill-866a0-default-rtdb.asia-southeast1.firebasedatabase.app"
-});
-app.use(cors());
-
 // Endpoint to fetch all data from a collection
-app.get('/api/data/:collectionName', async (req, res) => {
+app.get('/api/data/', async (req, res) => {
     const collectionName = req.params.collectionName;
-    const collectionRef = db.collection(collectionName);
+    const collectionRef = db.collection("Cards");
 
     try {
-        const snapshot = await collectionRef.get(); 
+        const snapshot = await collectionRef.get();
         const data = snapshot.docs.map(doc => {
-            const docData = doc.data();
-            return { id: doc.id, ...docData };
+            return { ...doc.data(), id: doc.id };
         });
         res.json(data);
     } catch (error) {
@@ -82,13 +81,12 @@ app.delete('/api/cards/:cardId', async (req, res) => {
 });
 
 
-
-app.post('/api/data/:collectionName', async (req, res) => {
+app.post('/api/data/', async (req, res) => {
     const collectionName = req.params.collectionName;
     const data = req.body;
 
     try {
-        const newDocRef = await db.collection(collectionName).add(data);
+        const newDocRef = await db.collection("Cards").add(data);
         res.json({ message: `Document added with ID: ${newDocRef.id}` });
     } catch (error) {
         console.error(error);
@@ -96,46 +94,18 @@ app.post('/api/data/:collectionName', async (req, res) => {
     }
 });
 
-app.post('/api/signup', async (req, res) => {
-    const { email, password, name } = req.body;  // Assuming required fields
+app.put('/api/data/:id', async (req, res) => {
+    const id = req.params.id;
+    const data = req.body;
 
     try {
-        const userRecord = await admin.auth().createUser({
-            email,
-            emailVerified: false, // Set to false unless you require email verification
-            password
-        });
-
-        const userData = {
-            uid: userRecord.uid,
-            name,
-            email
-        };
-
-        const userRef = db.collection('users').doc(userRecord.uid);
-        await userRef.set(userData);
-
-        res.json({ message: 'Signup successful!', uid: userRecord.uid });
+        await db.collection('Cards').doc(id).update(data);
+        res.json({ message: 'Card data updated' });
     } catch (error) {
         console.error(error);
-        res.status(400).send('Signup failed');  // Generic error for now
+        res.status(500).send('Error updating card data');
     }
 });
-
-app.post('/api/login', async (req, res) => {
-    const { email, password } = req.body;
-
-    try {
-        const userCredential = await admin.auth().signInWithEmailAndPassword(email, password);
-        const user = await admin.auth().getUser(userCredential.user.uid);
-
-        res.json({ message: 'Login successful!', uid: user.uid });
-    } catch (error) {
-        console.error(error);
-        res.status(401).send('Login failed');
-    }
-});
-
 
 app.get('/api/user/:uid', async (req, res) => {
     const uid = req.params.uid;

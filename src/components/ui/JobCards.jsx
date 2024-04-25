@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Text, Button } from '@chakra-ui/react';
 import axios from 'axios';
-import HorizontalScrollableCards from '../layouts/HorCards';
+import ProfCards from '../layouts/ProfCards';
 
 const JobList = ({ mode }) => {
   const [jobs, setJobs] = useState([]);
@@ -20,50 +20,19 @@ const JobList = ({ mode }) => {
     fontSize: "48px",
     fontWeight: "600"
   };
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        setLoading(true);
-        let response;
-        if (mode === 'completed') {
-          // Fetch completed jobs
-          response = await axios.get('api/completed-jobs');
-        } else if (mode === 'ongoing') {
-          // Fetch ongoing jobs
-          response = await axios.get('api/ongoing-jobs');
-        }
-        setJobs(response.data);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching jobs:', error);
-        setLoading(false);
-      }
-    };
 
-    fetchJobs();
-  }, [mode]);
 
   return (
     <Box color={"gray.200"}>
-      <Text fontSize="xl" fontWeight="bold" mb={4}>
-        {mode === 'completed' ? 'Your Completed Jobs' : 'Your Ongoing Jobs'}
-      </Text>
-      {loading ? (
-        <Text>Loading...</Text>
-      ) : jobs.length === 0 ? (
-        <div style={containerStyles}>
-        <HorizontalScrollableCards number={4} textDesc={"View Details"} textTitle={"Connect"} />
+      <div style={containerStyles}>
+      <Text color={"gray.100"} style={textStyles}>ONGOING</Text>
+        <ProfCards number={6}  textTitle={"Mark Complete"} textDesc={"Cancel"} />
       </div>
-      ) : (
-        <Box>
-          {jobs.map((job) => (
-            <Box key={job.id} mb={4}>
-              <Text fontWeight="bold">{job.title}</Text>
-              <Text>{job.description}</Text>
-            </Box>
-          ))}
-        </Box>
-      )}
+
+      <div style={containerStyles}>
+      <Text color={"gray.100"} style={textStyles}>COMPLETED</Text>
+        <ProfCards number={1} textTitle={"View Details"} />
+      </div>
     </Box>
   );
 };

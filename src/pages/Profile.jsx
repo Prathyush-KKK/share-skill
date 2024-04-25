@@ -28,7 +28,6 @@ export default function DooDoo() {
     <Profile />
     <VStack spacing={4} align="flex-start">
       <JobList mode="completed" />
-      <JobList mode="ongoing" />
     </VStack>
     {/* <Footer /> */}
     </Box>

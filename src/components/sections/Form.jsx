@@ -88,7 +88,7 @@ const SimpleForm = ({ isOpen, onClose }) => {
         e.preventDefault();
         try {
             // Send data to backend API endpoint
-            const response = await axios.post('http://localhost:3000/api/data/Cards', {
+            const response = await axios.post('http://localhost:3000/api/data/', {
                 title: formData.title,
                 description: formData.description,
                 price: formData.price,
