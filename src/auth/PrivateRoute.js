@@ -5,19 +5,13 @@ import { Navigate } from "react-router-dom";
 
 const PrivateRoute = ({ children }) => {
   const { loading, user } = useContext(AuthContext);
-
-  if (loading) {
-    return <span className="loading loading-dots loading-lg"></span>;
-  }
-
+  console.log(loading, user);
   if (user) {
-    return children;
+    return <Navigate to="/login" />; // Redirect if not logged in
   }
 
-  return <Navigate to="/login" />;
+  return children;
 };
-
-
 
 PrivateRoute.propTypes = {
   children: PropTypes.node,

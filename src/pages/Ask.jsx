@@ -25,9 +25,8 @@ export default function Ask() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/data/');
+        const response = await axios.get('http://localhost:3000/api/data/Cards');
         setCards(response.data);
-        console.log(cards);
         setLoading(false);
       } catch (error) {
         setError(error.message);
@@ -37,6 +36,7 @@ export default function Ask() {
 
     fetchCards();
   }, []);
+  console.log(cards);
 
   // if (loading) {
   //   return <div>Loading...</div>;
@@ -89,13 +89,15 @@ export default function Ask() {
 
       <div style={containerStyles}>
       <Text color={"gray.100"} style={textStyles}>ONGOING</Text>
-        <HorizontalScrollableCards number={6}  textTitle={"Mark as Complete"} textDesc={"Cancel"} />
+        <HorizontalScrollableCards number={6}  textTitle={"Mark Complete"} textDesc={"Cancel"} />
         <FaArrowRight style={arrowStyles} />
       </div>
 
       <div style={containerStyles}>
       <Text color={"gray.100"} style={textStyles}>COMPLETED</Text>
         <HorizontalScrollableCards number={1} textTitle={"View Details"} />
+        <FaArrowRight style={arrowStyles} />
+
       </div>
       
     {/* <LandingLayout>

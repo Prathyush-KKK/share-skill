@@ -1,4 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import {
   Flex,
   Heading,
@@ -22,7 +24,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from "firebase/auth";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const CFaUserAlt = chakra(FaUserAlt);
 const CFaLock = chakra(FaLock);
@@ -44,16 +46,17 @@ const Signup = ({ toggleAuthMode }) => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log(user);
-        toggleAuthMode = true;
+        toggleAuthMode(true);
+        toast.success('Login successful!');
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        // Display error toast
+        toast.error(errorMessage);
       });
   };
-  
-
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
@@ -62,7 +65,9 @@ const Signup = ({ toggleAuthMode }) => {
         const token = credential.accessToken;
         const user = result.user;
         console.log(user);
-        toggleAuthMode = true;
+        navigate('/');
+        toggleAuthMode(true);
+        toast.success('SignUp successful!');
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -70,6 +75,7 @@ const Signup = ({ toggleAuthMode }) => {
         const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
         console.log(errorCode, errorMessage, email, credential);
+        toast.error(errorMessage, email);
       });
   };
 
@@ -134,7 +140,6 @@ const Signup = ({ toggleAuthMode }) => {
                 </InputGroup>
               </FormControl>
               <Button
-              onClick={toggleAuthMode}
                 borderRadius={10}
                 type="submit"
                 variant="solid"
@@ -149,7 +154,7 @@ const Signup = ({ toggleAuthMode }) => {
       </Stack>
       <Box color="gray.200">
         Already have an account?{" "}
-        <Link color="blue.700" href="#" onClick={toggleAuthMode}>
+        <Link color="blue.700" href="#" onClick={() => toggleAuthMode(true)}>
           Log in
         </Link>
         <Button ml="10" onClick={signInWithGoogle} pl="10">

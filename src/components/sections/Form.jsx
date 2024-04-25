@@ -4,6 +4,10 @@ import { collection, addDoc, getFirestore } from 'firebase/firestore';
 import { initializeApp } from "firebase/app";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
+import {toast} from 'react-toastify'
+import axios from 'axios';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 
 const firebaseConfig = {
     apiKey: "AIzaSyA6VRfKh4Ct4lXO60oWxRf46d2bI2dIHpg",
@@ -18,7 +22,30 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
+
 const SimpleForm = ({ isOpen, onClose }) => {
+
+    
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        setCurrentUser(user);
+      } else {
+        // No user is signed in
+        setCurrentUser(null);
+      }
+    });
+
+    return unsubscribe; // Cleanup function to unsubscribe from auth state changes
+  }, []);
+
+  console.log(currentUser)
+
+
     const [formData, setFormData] = useState({
         title: '',
         description: '',
@@ -28,8 +55,10 @@ const SimpleForm = ({ isOpen, onClose }) => {
         keywords: '',
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [currentUserUID, setCurrentUserUID] = useState(null); // State to store current user's UID
 
     const cardsCollection = collection(db, 'Cards');
+    
 
     useEffect(() => {
         if (!isOpen) {
@@ -40,6 +69,8 @@ const SimpleForm = ({ isOpen, onClose }) => {
                 location: '',
                 contact: '',
                 keywords: '',
+                status: '',
+                uid: '',
             });
             setIsSubmitted(false);
         }
@@ -56,18 +87,28 @@ const SimpleForm = ({ isOpen, onClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await addDoc(cardsCollection, {
+            // Send data to backend API endpoint
+            const response = await axios.post('http://localhost:3000/api/data/Cards', {
                 title: formData.title,
                 description: formData.description,
                 price: formData.price,
                 location: formData.location,
                 contact: formData.contact,
                 keywords: formData.keywords,
+                status: "pending",
+                uid: currentUser.uid,
             });
+    
+            // Handle success response
+            console.log(response.data.message);
             setIsSubmitted(true);
-            window.location.reload();
+            toast.success("success")
+
+            onClose(); // Close the modal after submission
         } catch (error) {
+            // Handle error response
             console.error('Error adding document:', error);
+            toast.error("error adding listing")
         }
     };
 
@@ -109,14 +150,14 @@ const SimpleForm = ({ isOpen, onClose }) => {
                                     onChange={handleChange}
                                 ></Textarea>
                             </FormControl>
-                            <FormControl mb={4}>
+                            {/* <FormControl mb={4}>
                                 <FormLabel>Image URL:</FormLabel>
                                 <Textarea
                                     name="imageURL"
                                     value={formData.title}
                                     onChange={handleChange}
                                 ></Textarea>
-                            </FormControl>
+                            </FormControl> */}
                             <FormControl mb={4}>
                                 <FormLabel>Price:</FormLabel>
                                 <Input

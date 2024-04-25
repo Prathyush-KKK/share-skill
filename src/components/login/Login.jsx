@@ -1,4 +1,7 @@
 import { useState } from "react";
+import {toast} from "react-toastify"
+import 'react-toastify/dist/ReactToastify.css';
+
 import {
   Flex,
   Heading,
@@ -42,13 +45,18 @@ const Login = ({toggleAuthMode}) => {
         const user = userCredential.user;
         console.log(user);
         navigate('/');
+        toast.success('Login successful!');
+
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        toast.error(errorMessage);
+
       });
   };
+
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, googleProvider)
@@ -58,6 +66,8 @@ const Login = ({toggleAuthMode}) => {
         const user = result.user;
         console.log(user);
         navigate('/');
+        toast.success('Login successful!');
+
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -65,6 +75,8 @@ const Login = ({toggleAuthMode}) => {
         const email = error.customData.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
         console.log(errorCode, errorMessage, email, credential);
+        toast.error(errorMessage, email);
+
       });
   };
 

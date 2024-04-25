@@ -27,20 +27,8 @@ GET PAID         </Heading>
             fontSize={{ base: '2.3rem', sm: '4xl', md: '3.8rem' }}
             lineHeight={{ base: '1rem', md: '4rem', sm:'1rem' }}>
 COMPLETE PEOPLE'S TASKS          </Heading>
-          <Stack spacing={20} direction={'row'} paddingTop={55}>
-            <Button
-              // rounded={'full'}
-              px={6}
-              borderRadius={0}
-              color={'white'}
-              bg={'#111B47'}
-              paddingLeft={10}
-              paddingRight={10}
-              onClick={navigate('/ask')}
-  
-              // _hover={{ bg: 'orange.500' }}
-              >
-Request Work            </Button>
+          <Stack spacing={0} direction={'row'} paddingTop={55}>
+           
 
           </Stack>
         </Stack>

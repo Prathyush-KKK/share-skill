@@ -18,6 +18,7 @@ import JobList from "../components/ui/JobCards";
 import Header from "../components/sections/Header";
 import MarqueeText from "../components/sections/Marquee";
 
+
 export default function DooDoo() {
   return (
     <><MarqueeText />

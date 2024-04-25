@@ -1,44 +1,76 @@
-import React from "react";
-import { Text, Flex } from "@chakra-ui/react"; // Assuming Chakra UI for styling
+import React, { useState, useEffect } from "react";
+import { Text } from "@chakra-ui/react";
 import Card from "../ui/Cards";
-import { FaArrowRight } from "react-icons/fa"; // Importing FontAwesome arrow icon
-import {CustomScroll} from "react-custom-scroll";
+import { FaArrowRight } from "react-icons/fa";
+import { CustomScroll } from "react-custom-scroll";
 
+export default function HorizontalScrollableCards({
+  number,
+  textTitle,
+  textDesc,
+}) {
+  const containerStyles = {
+    display: "flex",
+    flexDirection: "row",
+    width: "60vw",
+    alignItems: "center",
+    overflowX: "auto",
+    padding: "20px",
+    position: "relative",
+  };
 
-export default function HorizontalScrollableCards({number, textTitle, textDesc}) {
-    const containerStyles = {
-        display: "flex",
-        flexDirection: "row",
-        width: "60vw",
-        alignItems: "center",
-        overflowX: "auto", // Enable horizontal scrolling
-        padding: "20px",
-        position: "relative", // Positioning for the arrow
-      };
-    
-     
-      const cards = []; // Array to hold card components
+  const [cardsData, setCardsData] = useState([]);
+  const [filteredCards, setFilteredCards] = useState([]);
 
-      // Loop to generate 4 cards
-      for (let i = 0; i < number; i++) {
-        cards.push(<Card title="Exam Help" description="I need help to study for FATS asap. Second year student here" price={"Rs. 3400"} key={i} textTitle={textTitle} textDesc={textDesc} />); // Pushing Card components into the array
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/data/Cards");
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        const jsonData = await response.json();
+        setCardsData(jsonData);
+        console.log(cardsData);
+      } catch (error) {
+        console.error("Error fetching data:", error.message);
       }
-      const cardContainerStyles = {
-        display: "flex",
-        flexDirection: "row",
-        gap: "20px",
-      };
-    
-      
-    
-      return (
-        <div style={containerStyles}>
-          <div style={cardContainerStyles}>
-            {/* Render your Card components here */}
+    };
 
-            {cards}
-          </div>
-          {/* Arrow icon */}
-        </div>
-      );
-    }
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    // Filter cards based on status
+    const filtered = cardsData.filter((card) => {
+      if (textTitle === "Promote" && card.status === "pending") return true;
+      if (textTitle === "Mark Complete" && card.status === "ongoing") return true;
+      if (textTitle === "View Details" && card.status === "completed") return true;
+      return false;
+    });
+    setFilteredCards(filtered);
+  }, [cardsData, textTitle]);
+
+  const cardContainerStyles = {
+    display: "flex",
+    flexDirection: "row",
+    gap: "20px",
+  };
+
+  return (
+    <div style={containerStyles}>
+      <div style={cardContainerStyles}>
+        {filteredCards.map((card, index) => (
+          <Card
+            title={card.title}
+            description={card.description}
+            price={card.price}
+            key={index}
+            textTitle={textTitle}
+            textDesc={textDesc}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}

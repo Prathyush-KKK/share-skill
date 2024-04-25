@@ -62,7 +62,7 @@ function Cards(props) {
           {description}
         </Text>
         <Text color='blue.600' fontSize='2xl'>
-          {price}
+          {"Rs." + price}
         </Text>
       </Stack>
       <Divider />

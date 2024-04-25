@@ -8,8 +8,13 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import auth from "../firebase";
 
-export const AuthContext = createContext(null);
-
+export const AuthContext = createContext({
+  user: null,
+  loading: true,
+  createUser: () => {}, // Placeholder functions
+  loginUser: () => {},
+  logOut: () => {},
+});
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);

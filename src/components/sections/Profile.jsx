@@ -1,8 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Container, Heading, Text, VStack, Avatar, Divider, Badge, Flex, Spacer, Stack, Button, IconButton } from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+
 
 const ProfilePage = () => {
+
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in
+        setCurrentUser(user);
+      } else {
+        // No user is signed in
+        setCurrentUser(null);
+      }
+    });
+
+    return unsubscribe; // Cleanup function to unsubscribe from auth state changes
+  }, []);
+
+  console.log(currentUser)
+
+  
   // State variables for user details
   const [name, setName] = useState("John Doe");
   const [designation, setDesignation] = useState("Engineer");
