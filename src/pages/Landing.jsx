@@ -22,7 +22,7 @@ export default function Landing() {
       <Install />
       <Features />
     
-    <Plans />
+    {/* <Plans /> */}
     <Footer />  
     </div>
     </>

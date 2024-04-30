@@ -109,7 +109,7 @@ export default function Hero2() {
           
           >
             Welcome <span> </span>  
-            <span style={{textDecoration: "underline", cursor: "pointer"}}>Prathyush!</span> 
+            <span style={{textDecoration: "underline", cursor: "pointer"}}>!</span> 
           </Text>
           
           

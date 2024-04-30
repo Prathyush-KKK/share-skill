@@ -10,7 +10,7 @@ export default function HorizontalScrollableCards({
   textTitle,
   textDesc,
   onUpdateCardStatus,
-  isComplete, isOngoing
+  isComplete
 }) {
   const containerStyles = {
     display: "flex",
@@ -69,7 +69,7 @@ useEffect(() => {
       if (
         card.uid1 === currentUser.uid && // Check if uid1 matches currentUser.uid
         card.uid && // Check if uid is present
-        ((isComplete ? card.status === "completed" : true) || (!isComplete && card.status === "ongoing")) // Check if status is complete if isComplete is true
+        (isComplete ? card.status === "ongoing" : true)  // Check if status is complete if isComplete is true
       ) {
         return true;
       }

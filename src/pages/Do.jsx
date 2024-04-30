@@ -8,7 +8,7 @@ import KeywordHorizontal from "../components/layouts/KeywordHorizontal";
 import { Flex } from "@chakra-ui/react";
 
 export default function DooDoo() {
-  const [cardsData, setCardsData] = useState([]);
+const [cardsData, setCardsData] = useState([]);
   const [selectedKeyword, setSelectedKeyword] = useState("");
   const containerStyles = {
     flexDirection: "row",

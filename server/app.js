@@ -151,7 +151,38 @@ app.post('/api/jobs', async (req, res) => {
   }
 });
 
+app.put('/api/complete/:docId', async (req, res) => {
+    const docId = req.params.docId;
+    const uid = req.body.uid;
+
+    try {
+        const docRef = db.collection('Cards').doc(docId);
+        const doc = await docRef.get();
+
+        if (!doc.exists) {
+            return res.status(404).send('Document not found');
+        }
+
+        const cardData = doc.data();
+
+        // Check if 'complete' or 'complete2' key exists
+        if (cardData.hasOwnProperty('complete') && cardData.hasOwnProperty('complete2')) {
+            // Both keys already exist, change status to 'complete'
+            await docRef.update({ status: 'complete' });
+            res.json({ message: 'Status updated to complete' });
+        } else {
+            // Add uid to 'complete' or 'complete2' key
+            const updateData = cardData.hasOwnProperty('complete') ? { complete2: uid } : { complete: uid };
+            await docRef.update(updateData);
+            res.json({ message: 'Uid added to completion list' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error completing card');
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}`)
 })
+

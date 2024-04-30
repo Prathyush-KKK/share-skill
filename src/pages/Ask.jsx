@@ -17,6 +17,12 @@ import axios from "axios";
 import { FaArrowRight } from "react-icons/fa";
 import HorizontalScrollableCards from "../components/layouts/HorCards";
 
+
+
+
+
+
+
 export default function Ask() {
   const [cards, setCards] = useState([]);
   const [loading, setLoading] = useState(true);

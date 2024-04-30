@@ -2,53 +2,69 @@ import React, { useState, useEffect } from 'react';
 import { Box, Container, Heading, Text, VStack, Avatar, Divider, Badge, Flex, Spacer, Stack, Button, IconButton } from '@chakra-ui/react';
 import { EditIcon } from '@chakra-ui/icons';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
+import axios from 'axios'; // Import Axios for making HTTP requests
+import { toast } from 'react-toastify';
 
 const ProfilePage = () => {
-
   const [currentUser, setCurrentUser] = useState(null);
-
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in
-        setCurrentUser(user);
-      } else {
-        // No user is signed in
-        setCurrentUser(null);
-      }
-    });
-
-    return unsubscribe; // Cleanup function to unsubscribe from auth state changes
-  }, []);
-
-  console.log(currentUser)
-
-  
-  // State variables for user details
   const [name, setName] = useState("John Doe");
   const [designation, setDesignation] = useState("Engineer");
   const [location, setLocation] = useState("Vellore, TN");
   const [email, setEmail] = useState("john.doe@example.com");
   const [phone, setPhone] = useState("+91 9428265382");
   const [bio, setBio] = useState("Hello 👋 I am John Doe!");
-
-  // State variable to toggle edit mode
   const [isEditMode, setIsEditMode] = useState(false);
 
-  // Function to handle edit mode toggle
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setCurrentUser(user);
+      } else {
+        setCurrentUser(null);
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
 
-  // Function to handle form submission
-  const handleSubmit = () => {
-    // Call API to update user details
-    // Update state variables with new user details
-    // Close edit mode
-    toggleEditMode();
+  const handleSubmit = async () => {
+    try {
+      const userData = {
+        name,
+        designation,
+        location,
+        email,
+        phone,
+        bio,
+      };
+
+      // Send PUT request to update user details
+      const response = await axios.put(`http://localhost:3000/api/user/${currentUser.uid}`, userData);
+      console.log(response.data); // Log response message
+      toast.success("Updated!")
+    } catch (error) {
+      console.error('Error updating user data:', error);
+    }
+
+    toggleEditMode(); // Close edit mode
   };
+
+  const setEmailFromCurrentUser = () => {
+    if (currentUser) {
+      setEmail(currentUser.email);
+    }
+  };
+
+  useEffect(() => {
+    setEmailFromCurrentUser();
+  }, [currentUser, setEmailFromCurrentUser]);
+  
+  
 
   return (
     <Container maxW="container.md" bg="white" p={6} borderRadius="md" boxShadow="md" border='10px' borderColor='gray.700' position="relative">
